@@ -3,38 +3,54 @@
  * на сервер.
  * */
 const createRequest = (options = {}) => {
-    const formData = new FormData();
-    if (options.method.toUpperCase() != 'GET') {
-        for (let field in options.data) {
-            formData.append(field, options.data[field]);
-        }
-    } else {
-    let param = '';
-    let arr = [];
-        for (let field in options.data) {
-            arr.push(field + '=' +  options.data[field])
-        }
-    param = arr.join('&');
-    options.url = options.url + '?' + param;
-    }
-
     const xhr = new XMLHttpRequest();
-    xhr.responseType = 'json';
-    try {
-        xhr.open(options.method, options.url)
-        xhr.send(formData)
-    }
-    catch (e) {
-        options.callback(e);
-    }
-    
-    xhr.addEventListener('load', () => {
-        let response = null;
-        let error = null;
+    let { url, method, data, callback } = options;
+    let formData;
 
-    if (xhr.status != 200) {
-        error = xhr.statusText;
+    if (method.toUpperCase() === 'GET') {
+        const currentUrl = window.location.href;
+        url = new URL(currentUrl.slice(0, -1) + url);
+        // url = new URL(url);
+        // console.log(url)
+
+
+        if (data) {
+            for ( let key in data ) {
+                url.searchParams.append(key, data[key]);
+            }
+        } else {
+            formData = new FormData();
+            for ( let key in data ) {
+                formData.append(key, data[key]);
+            }
+        }
     }
-    options.callback(error, response);
+
+    try {
+        xhr.open(method, url);
+        xhr.responseType = 'json';
+        xhr.send(formData);
+    } catch (e) {
+        callback(e);
+    }
+
+    xhr.addEventListener('load', () => {
+        if (xhr.status === 200) {
+            callback(null, xhr.response);
+        } else {
+            callback(xhr.statusText, null);
+        }
     });
-};
+}
+
+// createRequest({
+//     url: '/user/current',
+//     method: 'GET',
+//     data: {
+//         email: 'demo@demo',
+//         password: 'demo'
+//     },
+//     callback: (e,r) => {
+//         console.log(e,r)
+//     }
+// })
