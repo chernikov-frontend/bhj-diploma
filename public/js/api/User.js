@@ -4,6 +4,8 @@
  * Имеет свойство URL, равное '/user'.
  * */
 class User {
+
+
   static URL = '/user';
   /**
    * Устанавливает текущего пользователя в
@@ -80,7 +82,6 @@ class User {
     createRequest({
       url: this.URL + '/register',
       method: 'POST',
-      responseType: 'json',
       data,
       callback: (err, response) => {
         if (response && response.user) {
@@ -88,7 +89,7 @@ class User {
         }
         callback(err, response);
       }
-    });
+    });    
   }
 
   /**

@@ -13,7 +13,7 @@ class AsyncForm {
    * через registerEvents()
    * */
   constructor(element) {
-    if(!element) {
+    if (!element) {
       throw new Error('Элемент не существует');
     }
 
@@ -43,9 +43,8 @@ class AsyncForm {
     let formData = new FormData(this.element);
     let entries = formData.entries();
     let formDataResult = {};
-
     for (let item of entries) {
-      formDataResult[item[0]] = item[1];
+      formDataResult[item[0]] = item[1]
     }
     return formDataResult;
   }

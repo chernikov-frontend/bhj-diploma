@@ -5,8 +5,6 @@
 class Entity {
 
   static URL = '';
-
-
   /**
    * Запрашивает с сервера список данных.
    * Это могут быть счета или доходы/расходы
@@ -16,8 +14,8 @@ class Entity {
     createRequest({
       url: this.URL,
       method: 'GET',
-      data: data,
-      callback: callback
+      data,
+      callback,
     });
   }
 
@@ -29,9 +27,9 @@ class Entity {
   static create(data, callback) {
     createRequest({
       url: this.URL,
-      method: 'POST',
-      data: data,
-      callback: callback
+      method: 'PUT',
+      data,
+      callback,
     });
   }
 
@@ -43,8 +41,8 @@ class Entity {
     createRequest({
       url: this.URL,
       method: 'DELETE',
-      data: data,
-      callback: callback
-    });
+      data,
+      callback,
+    });    
   }
 }

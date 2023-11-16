@@ -10,47 +10,36 @@ const createRequest = (options = {}) => {
     if (method.toUpperCase() === 'GET') {
         const currentUrl = window.location.href;
         url = new URL(currentUrl.slice(0, -1) + url);
-        // url = new URL(url);
-        // console.log(url)
-
 
         if (data) {
-            for ( let key in data ) {
-                url.searchParams.append(key, data[key]);
-            }
-        } else {
-            formData = new FormData();
-            for ( let key in data ) {
+            for (let key in data) {
+                url.searchParams.set(key, data[key]);
+            };
+        };
+    } else {
+        formData = new FormData();
+
+        if (data) {
+            for (let key in data) {
                 formData.append(key, data[key]);
-            }
-        }
-    }
+            };
+        };    
+    };    
 
     try {
         xhr.open(method, url);
         xhr.responseType = 'json';
         xhr.send(formData);
     } catch (e) {
+        // перехват сетевой ошибки
         callback(e);
-    }
+    }    
 
     xhr.addEventListener('load', () => {
         if (xhr.status === 200) {
             callback(null, xhr.response);
         } else {
-            callback(xhr.statusText, null);
+            callback(xhr.statustext, null);
         }
-    });
-}
-
-// createRequest({
-//     url: '/user/current',
-//     method: 'GET',
-//     data: {
-//         email: 'demo@demo',
-//         password: 'demo'
-//     },
-//     callback: (e,r) => {
-//         console.log(e,r)
-//     }
-// })
+    }); 
+};

@@ -5,6 +5,36 @@
       "email": "demo@demo",
       "password": "demo",
       "id": "1"
+    },
+    {
+      "name": "Serg",
+      "email": "serg@serg",
+      "password": "serg",
+      "id": "fxofquslp107qze"
+    },
+    {
+      "name": "Сергей",
+      "email": "1@1",
+      "password": "1111",
+      "id": "fxofdjglp10gk8v"
+    },
+    {
+      "name": "22",
+      "email": "2@2",
+      "password": "2222",
+      "id": "fxofow8lp10k535"
+    },
+    {
+      "name": "33",
+      "email": "3@3",
+      "password": "3333",
+      "id": "fxoftu4lp10ky4k"
+    },
+    {
+      "name": "44",
+      "email": "4@4",
+      "password": "4444",
+      "id": "fxofvj0lp10o8qn"
     }
   ],
   "accounts": [
@@ -22,6 +52,21 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
+    },
+    {
+      "name": "зп",
+      "user_id": "fxofquslp107qze",
+      "id": "fxofjtglp107zfw"
+    },
+    {
+      "name": "копилка ",
+      "user_id": "fxofquslp107qze",
+      "id": "fxof74clp10b4ce"
+    },
+    {
+      "name": "на дом ",
+      "user_id": "fxofquslp107qze",
+      "id": "fxofrgklp10bkjk"
     }
   ],
   "transactions": [
@@ -159,6 +204,33 @@
       "sum": 300000,
       "type": "expense",
       "user_id": "1"
+    },
+    {
+      "id": "fxofgtolp108f97",
+      "type": "income",
+      "name": "зарплата ",
+      "sum": 50000,
+      "account_id": "fxofjtglp107zfw",
+      "user_id": "fxofquslp107qze",
+      "created_at": "2023-11-16T09:44:23.610Z"
+    },
+    {
+      "id": "fxofk04lp10aw1a",
+      "type": "expense",
+      "name": "продукты ",
+      "sum": 3000,
+      "account_id": "fxofjtglp107zfw",
+      "user_id": "fxofquslp107qze",
+      "created_at": "2023-11-16T09:46:18.670Z"
+    },
+    {
+      "id": "fxofe9olp10ftnr",
+      "type": "income",
+      "name": "проценты ",
+      "sum": 50000,
+      "account_id": "1",
+      "user_id": "1",
+      "created_at": "2023-11-16T09:50:08.870Z"
     }
   ]
 }
